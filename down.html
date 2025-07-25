@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download Button</title>
+  <style>
+    /* Add some basic styles for better visibility */
+    .icon-large {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: #ccc; /* Placeholder color for the icon */
+    }
+  </style>
+</head>
+<body>
+
+<ul>
+  <li>
+    <a href="#">
+      <span class="icon-large"></span>
+      <input type="button" onclick="download()" value="Download">
+    </a>
+  </li>
+</ul>
+
+<script>
+  function download() {
+    // Create a dummy data for demonstration
+    const data = 'This is the content of the file.';
+
+    // Create a Blob containing the data
+    const blob = new Blob([data], { type: 'text/plain' });
+
+    // Create a download link
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'example.txt';
+
+    // Append the link to the body
+    document.body.appendChild(link);
+
+    // Trigger the download
+    link.click();
+
+    // Remove the link from the body
+    document.body.removeChild(link);
+  }
+</script>
+
+</body>
+</html>
